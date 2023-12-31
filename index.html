@@ -1,0 +1,73 @@
+<!DOCTYPE html >
+
+<html>
+  <head>
+    <style>
+      h1 {
+        color: red;
+      }
+      p {
+        width: 60%;
+      }
+
+      .numButton {
+        margin-top: 32px;
+      }
+      body{
+        background: lightblue;
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <ul>
+        <li>About</li>
+        <li>Home</li>
+      </ul>
+    </nav>
+
+    <h1 id="header">Hello World</h1>
+    <p></p>
+    <section>
+     <form id="frm" action="#"  onSubmit=useName(event)>
+        <label for="text" >Username</label><input id ="text" type="text" name="username" />
+          <input type="submit"/>
+      </form>
+  </section>
+
+  <button class="numButton" onclick="appendNumberToList()">Write Random Number</button>
+
+  <section>
+    <h2>Number List Section</h2>
+    <ul id="numbered-list">
+      <li>1</li>
+    </ul>
+  </section>
+    <script>
+     const form = document.getElementById("frm");
+     const header = document.getElementById("header");
+     const button = document.getElementById("booter");
+
+    //Function that changes the h1 value into a hello message 
+     const useName = (event) => {
+        event.preventDefault();
+         const name = document.getElementById("text").value || "User";
+         const el = document.getElementById("header");
+         console.log(name)
+         console.log(event.target.username)
+         el.innerText = `Hello ${name}`;
+         document.getElementById("text").value = "";
+     }
+    
+     //Function that adds a new list item with a random number onto the unordered list. 
+     const appendNumberToList = () => {
+      const randomNumber = Math.floor(Math.random()*100);
+      const list = document.getElementById('numbered-list');
+      const newBullet = document.createElement('li');
+      newBullet.innerText = randomNumber
+      list.appendChild(newBullet);
+
+     };
+    </script>
+  </body>
+</html>
